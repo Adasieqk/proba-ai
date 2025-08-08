@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesjonalne strony WWW i doradztwo hostingowe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Zmienne CSS - łatwe do modyfikacji */
+        :root {
+            --primary-color: #3b82f6; /* Główny kolor (niebieski) - zmień na dowolny */
+            --secondary-color: #1e40af; /* Drugi kolor (ciemniejszy niebieski) */
+            --text-color: #1f2937; /* Kolor tekstu */
+            --bg-color: #f9fafb; /* Kolor tła */
+            --transition-speed: 0.3s; /* Prędkość animacji */
+            --font-main: 'Segoe UI', system-ui, sans-serif; /* Czcionka główna */
+            --font-heading: 'Segoe UI', system-ui, sans-serif; /* Czcionka nagłówków */
+        }
+
+        /* Niestandardowe style */
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+        }
+
+        /* Płynne animacje */
+        .transition-all {
+            transition: all var(--transition-speed) ease;
+        }
+
+        /* Efekt hover dla przycisków */
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animacja pojawiania się sekcji */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Nawigacja mobilna */
+        .mobile-nav {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) ease-out;
+        }
+
+        .mobile-nav.open {
+            max-height: 500px; /* Wystarczająco duża wartość, aby pomieścić menu */
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Nawigacja -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-600">logo</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-all font-medium">Strona główna</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-all font-medium">Usługi</a>
+                    <a href="#process" class="text-gray-700 hover:text-blue-600 transition-all font-medium">Jak pracujemy</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-all font-medium">Kontakt</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl hamburger"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-nav" class="mobile-nav md:hidden">
+                <div class="pt-2 pb-4 space-y-2">
+                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-all">Strona główna</a>
+                    <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-all">Usługi</a>
+                    <a href="#process" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-all">Jak pracujemy</a>
+                    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded transition-all">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sekcja główna -->
+    <section id="home" class="py-20 bg-gradient-to-r from-blue-50 to-indigo-50 fade-in">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Tworzymy nowoczesne strony internetowe</h1>
+                    <p class="text-lg text-gray-600 mb-8">Profesjonalne rozwiązania dla Twojego biznesu. Strony WWW, hosting i domeny - kompleksowa obsługa.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all btn-hover">
+                            Skontaktuj się
+                        </a>
+                        <a href="#services" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-all btn-hover">
+                            Nasze usługi
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Tworzenie stron internetowych" 
+                         class="rounded-lg shadow-xl w-full max-w-lg h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja usług -->
+    <section id="services" class="py-20 bg-white fade-in">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nasze usługi</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Oferujemy kompleksowe rozwiązania dla Twojej obecności online.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Usługa 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Tworzenie stron WWW</h3>
+                    <p class="text-gray-600 mb-4">Projektujemy i tworzymy nowoczesne, responsywne strony internetowe dostosowane do Twoich potrzeb.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Strony wizytówki</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Sklepy internetowe</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Strony firmowe</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Usługa 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-server text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Hosting i domeny</h3>
+                    <p class="text-gray-600 mb-4">Doradzamy w wyborze najlepszych rozwiązań hostingowych i pomagamy w rejestracji domen.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Domeny .pl, .com, .eu i inne</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Hosting SSD</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Certyfikaty SSL</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Usługa 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-tools text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Wsparcie i zarządzanie</h3>
+                    <p class="text-gray-600 mb-4">Oferujemy kompleksowe zarządzanie Twoją stroną internetową oraz wsparcie techniczne.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Aktualizacje treści</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Kopie zapasowe</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Optymalizacja SEO</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja procesu pracy -->
+    <section id="process" class="py-20 bg-gray-50 fade-in">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Jak pracujemy?</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Prosty i przejrzysty proces współpracy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Krok 1 -->
+                <div class="text-center">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Konsultacja</h3>
+                    <p class="text-gray-600">Omawiamy Twoje potrzeby i oczekiwania dotyczące strony internetowej.</p>
+                </div>
+
+                <!-- Krok 2 -->
+                <div class="text-center">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Projekt</h3>
+                    <p class="text-gray-600">Przygotowujemy projekt graficzny i funkcjonalności strony.</p>
+                </div>
+
+                <!-- Krok 3 -->
+                <div class="text-center">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Realizacja</h3>
+                    <p class="text-gray-600">Tworzymy stronę zgodnie z zatwierdzonym projektem.</p>
+                </div>
+
+                <!-- Krok 4 -->
+                <div class="text-center">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Wdrożenie</h3>
+                    <p class="text-gray-600">Publikujemy stronę i zapewniamy wsparcie po wdrożeniu.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white rounded-xl shadow-md p-8 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Klient opisuje, my realizujemy</h3>
+                <p class="text-gray-600 mb-6 text-center">
+                    Nasz model pracy opiera się na ścisłej współpracy z klientem. Ty opisujesz swoje potrzeby i wizję, 
+                    a my zajmujemy się techniczną realizacją projektu. Dzięki temu otrzymujesz stronę dokładnie taką, 
+                    jakiej potrzebujesz, bez konieczności zagłębiania się w techniczne szczegóły.
+                </p>
+                <div class="flex justify-center">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all btn-hover">
+                        Rozpocznij współpracę
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja kontakt -->
+    <section id="contact" class="py-20 bg-white fade-in">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Skontaktuj się z nami</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Masz pytania? Chętnie na nie odpowiemy.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Imię i nazwisko</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Wprowadź swoje imię i nazwisko">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Adres e-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Wprowadź swój e-mail">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Temat</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="O czym chcesz porozmawiać?">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Wiadomość</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" placeholder="Opisz swoje potrzeby..."></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all btn-hover w-full">
+                            Wyślij wiadomość
+                        </button>
+                    </form>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl h-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Dane kontaktowe</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">E-mail</h4>
+                                    <p class="text-gray-600">kontakt@przykladowa-domena.pl</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Telefon</h4>
+                                    <p class="text-gray-600">+48 123 456 789</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Adres</h4>
+                                    <p class="text-gray-600">ul. Przykładowa 123<br>00-000 Warszawa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-800 mb-4">Godziny pracy</h4>
+                            <div class="space-y-2 text-gray-600">
+                                <p class="flex justify-between"><span>Poniedziałek - Piątek</span> <span>8:00 - 16:00</span></p>
+                                <p class="flex justify-between"><span>Sobota</span> <span>Nieczynne</span></p>
+                                <p class="flex justify-between"><span>Niedziela</span> <span>Nieczynne</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold text-white">logo</span>
+                    <p class="text-gray-400 mt-2">Profesjonalne strony WWW i doradztwo hostingowe</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Nazwa Twojej Firmy. Wszelkie prawa zastrzeżone.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">Polityka prywatności</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">Warunki korzystania</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Przycisk do przewijania na górę -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Funkcja do obsługi menu mobilnego
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            
+            // Zmiana ikony
+            if (mobileNav.classList.contains('open')) {
+                hamburger.classList.remove('fa-bars');
+                hamburger.classList.add('fa-times');
+            } else {
+                hamburger.classList.remove('fa-times');
+                hamburger.classList.add('fa-bars');
+            }
+        });
+
+        // Płynne przewijanie do sekcji
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Zamknij menu mobilne jeśli jest otwarte
+                const mobileNav = document.getElementById('mobile-nav');
+                const hamburger = document.querySelector('.hamburger');
+                if (mobileNav.classList.contains('open')) {
+                    mobileNav.classList.remove('open');
+                    hamburger.classList.remove('fa-times');
+                    hamburger.classList.add('fa-bars');
+                    hamburger.classList.remove('active');
+                }
+                
+                // Przewiń do sekcji
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Przycisk "powrót na górę"
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animacja sekcji podczas przewijania
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Wywołaj na starcie dla widocznych elementów
+        fadeInOnScroll();
+        
+        // Dodaj listener do scrolla
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
